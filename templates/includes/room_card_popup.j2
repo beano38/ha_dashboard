@@ -1,0 +1,60 @@
+      - type: custom:bubble-card
+        card_type: pop-up
+        name: {{ room.name }}
+        icon: {{ room.icon }}
+        hash: "#{{ room.plug }}"
+        cards:
+{% if room.lights is defined %}
+          - type: custom:bubble-card
+            card_type: separator
+            name: Lights
+            icon: mdi:light
+          - type: custom:bubble-card
+            name: All Lights
+            card_type: button
+            button_type: slider
+            entity: light.{{ room.plug }}_lights
+            show_state: true
+            grid_options:
+              columns: 6
+{% for light in room.lights %}
+          - type: custom:bubble-card
+            name: {{ light.name }}
+            card_type: button
+            button_type: slider
+            entity: {{ light.entity }}
+            show_state: true
+            grid_options:
+              columns: 6
+{% endfor %}
+{% endif %}
+{% if room.switches is defined %}
+          - type: custom:bubble-card
+            card_type: separator
+            name: Switches
+            icon: mdi:switch
+          - type: custom:bubble-card
+            name: All Switches
+            card_type: button
+            button_type: slider
+            entity: switch.{{ room.plug }}_switches
+            show_state: true
+            grid_options:
+              columns: 6
+{% for switch in room.switches %}
+          - type: custom:bubble-card
+            name: {{ switch.name }}
+            card_type: button
+            button_type: slider
+            entity: {{ switch.entity }}
+            show_state: true
+            grid_options:
+              columns: 6
+{% endfor %}
+{% endif %}
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+          action: more-info
+

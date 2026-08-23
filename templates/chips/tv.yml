@@ -1,0 +1,22 @@
+          # TV
+          - type: template
+            entity: media_player.living_room_tv_un82ru8000fxza
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: none
+            icon: mdi:television
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: {% if is_state('media_player.living_room_tv_un82ru8000fxza', 'on') %} #835a3e {% else %} #353535 {% endif %};
+                  --color: {% if is_state('media_player.living_room_tv_un82ru8000fxza', 'on') %}  #ffffff {% else %} #ebeaea{% endif %};
+                  justify-content: center;
+                  height: 35px !important;
+                  width: 35px !important;
+                  border: 0 !important;
+                  box-shadow: none !important;
+                  border-radius: 22px !important;
+                }

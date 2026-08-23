@@ -1,0 +1,14 @@
+---
+- name: Run a simple template on localhost
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars_files:
+    - room_vars.yml
+
+  tasks:
+    - name: Render the Jinja2 template to a local file
+      ansible.builtin.template:
+        src: templates/dashboard.j2
+        dest: temp/dashboard.yml

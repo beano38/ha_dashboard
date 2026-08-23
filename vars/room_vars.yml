@@ -1,0 +1,42 @@
+rooms:
+  - name: Living Room
+    icon: mdi:sofa-outline
+    plug: livingroom
+    switches:
+      - entity: switch.plug_6
+        name: Christmas Tree Lights
+    media:
+      - type: tv
+        entity: media_player.living_room_tv_un82ru8000fxza
+  - name: Dining Room
+    icon: mdi:coffee-outline
+    plug: dining_room
+    switches:
+      - entity: switch.plug_7
+        name: Scentsy
+  - name: Office
+    icon: mdi:remote-desktop
+    plug: office
+    lights:
+      - entity: light.office_overhead
+        name: Fan Light
+    switches:
+      - entity: switch.plug_4
+        name: Darth Vader
+      - entity: switch.plug_8
+        name: Party
+    media:
+      - type: roku 
+        entity: media_player.office_roku_office
+  - name: Foyer
+    icon: mdi:door
+    plug: foyer
+    lights:
+      - entity: light.dining_room_leg_lamp
+        name: Leg Lamp
+      - entity: light.porch_1
+        name: Porch Left
+      - entity: light.porch_2
+        name: Porch Center
+      - entity: light.porch_3
+        name: Porch Right

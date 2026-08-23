@@ -1,0 +1,24 @@
+                  # Switches
+                  - type: template
+                    entity: switch.{{ room.plug }}_switches
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon: mdi:light-switch-off
+                    card_mod:
+                      style: |
+                        ha-card {
+                          {% raw -%}
+                          --chip-background: {% if is_state('switch.{% endraw -%}{{ room.plug }}{% raw -%}_switches', 'on') %} #2973B2 {% else %} #353535 {% endif %};
+                          --color: {% if is_state('switch.{% endraw -%}{{ room.plug }}{% raw -%}_switches', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          {% endraw -%}
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }
