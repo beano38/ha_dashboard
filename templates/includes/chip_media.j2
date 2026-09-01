@@ -1,0 +1,34 @@
+                  # Media
+                  - type: template
+                    entity: media_player.{{ room.plug }}_mediaplayers
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: none
+                    icon: mdi:television
+                    card_mod:
+                      style: |
+                        ha-card {
+                          {% raw -%}
+                          --chip-background: 
+                          {% if is_state('{% endraw -%}media_player.{{ room.plug }}_mediaplayers{% raw -%}', 'on') %}
+                          #835a3e 
+                          {% else %}
+                          #353535 
+                          {% endif %};
+                          --color: 
+                          {% if is_state('{% endraw -%}media_player.{{ room.plug }}_mediaplayers{% raw -%}', 'on') %}
+                          #ffffff
+                          {% else %}
+                          #ebeaea
+                          {% endif %};
+                          {% endraw -%}
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }

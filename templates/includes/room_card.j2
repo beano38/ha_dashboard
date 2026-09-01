@@ -66,7 +66,15 @@
               # ---- Chips ----
               - type: custom:mushroom-chips-card
                 chips:
-{% include "includes/chips.j2" %}
+{% if room.lights is defined %}
+{% include "includes/chip_lights.j2" %}
+{% endif %}
+{% if room.switches is defined %}
+{% include "includes/chip_switches.j2" %}
+{% endif %}
+{% if room.media is defined %}
+{% include "includes/chip_media.j2" %}
+{% endif %}
 
               # ---- End Chips ----
 

@@ -23,8 +23,6 @@ rooms:
     switches:
       - entity: switch.plug_4
         name: Darth Vader
-      - entity: switch.plug_8
-        name: Party
     media:
       - type: roku 
         entity: media_player.office_roku_office

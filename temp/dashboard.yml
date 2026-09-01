@@ -105,6 +105,37 @@ views:
                           border: 0 !important;
                           box-shadow: none !important;
                           border-radius: 22px !important;
+                        }                  # Media
+                  - type: template
+                    entity: media_player.livingroom_mediaplayers
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: none
+                    icon: mdi:television
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: 
+                          {% if is_state('media_player.livingroom_mediaplayers', 'on') %}
+                          #835a3e 
+                          {% else %}
+                          #353535 
+                          {% endif %};
+                          --color: 
+                          {% if is_state('media_player.livingroom_mediaplayers', 'on') %}
+                          #ffffff
+                          {% else %}
+                          #ebeaea
+                          {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
                         }
               # ---- End Chips ----
 
@@ -273,7 +304,28 @@ views:
               # ---- Chips ----
               - type: custom:mushroom-chips-card
                 chips:
-                  # Switches
+                  # Lights
+                  - type: template
+                    entity: light.office_lights
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon: mdi:lightbulb-group
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: {% if is_state('light.office_lights', 'on') %} #2973B2 {% else %} #353535 {% endif %};
+                          --color: {% if is_state('light.office_lights', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }                  # Switches
                   - type: template
                     entity: switch.office_switches
                     tap_action:
@@ -288,6 +340,37 @@ views:
                         ha-card {
                           --chip-background: {% if is_state('switch.office_switches', 'on') %} #2973B2 {% else %} #353535 {% endif %};
                           --color: {% if is_state('switch.office_switches', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }                  # Media
+                  - type: template
+                    entity: media_player.office_mediaplayers
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: none
+                    icon: mdi:television
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: 
+                          {% if is_state('media_player.office_mediaplayers', 'on') %}
+                          #835a3e 
+                          {% else %}
+                          #353535 
+                          {% endif %};
+                          --color: 
+                          {% if is_state('media_player.office_mediaplayers', 'on') %}
+                          #ffffff
+                          {% else %}
+                          #ebeaea
+                          {% endif %};
                           justify-content: center;
                           height: 35px !important;
                           width: 35px !important;
@@ -367,21 +450,21 @@ views:
               # ---- Chips ----
               - type: custom:mushroom-chips-card
                 chips:
-                  # Switches
+                  # Lights
                   - type: template
-                    entity: switch.foyer_switches
+                    entity: light.foyer_lights
                     tap_action:
                       action: toggle
                     hold_action:
                       action: more-info
                     double_tap_action:
                       action: more-info
-                    icon: mdi:light-switch-off
+                    icon: mdi:lightbulb-group
                     card_mod:
                       style: |
                         ha-card {
-                          --chip-background: {% if is_state('switch.foyer_switches', 'on') %} #2973B2 {% else %} #353535 {% endif %};
-                          --color: {% if is_state('switch.foyer_switches', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          --chip-background: {% if is_state('light.foyer_lights', 'on') %} #2973B2 {% else %} #353535 {% endif %};
+                          --color: {% if is_state('light.foyer_lights', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
                           justify-content: center;
                           height: 35px !important;
                           width: 35px !important;
@@ -509,14 +592,6 @@ views:
             card_type: button
             button_type: slider
             entity: switch.plug_4
-            show_state: true
-            grid_options:
-              columns: 6
-          - type: custom:bubble-card
-            name: Party
-            card_type: button
-            button_type: slider
-            entity: switch.plug_8
             show_state: true
             grid_options:
               columns: 6
