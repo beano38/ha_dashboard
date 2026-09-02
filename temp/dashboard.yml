@@ -21,6 +21,21 @@ views:
       position: fixed;
       }
     cards:
+      # weather
+      - type: weather-forecast
+        show_current: true
+        show_forecast: true
+        entity: weather.forecast_home
+        secondary_info_attribute: humidity
+        forecast_type: daily
+        forecast_slots: 5
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              box-shadow: none;
+              border: none;
+            }  
       - type: horizontal-stack
         cards:
         # Room Cards
@@ -60,11 +75,12 @@ views:
                     double_tap_action:
                       action: more-info
                     icon_color: >-
-                      {% if is_state('switch.livingroom_switches', 'on') 
-                      }
-                      or is_state('media_player.media_player.living_room_tv_un82ru8000fxza','on') %}                      #2973B2 
+                      {% if is_state('light.livingroom_lights', 'on')
+                        or is_state('switch.livingroom_switches', 'on')
+                        or is_state('media_player.livingroom_mediaplayers', 'on')%}
+                          #2973B2
                       {% else %}
-                        #7A7A7F 
+                          #7A7A7F
                       {% endif %}
                     primary_info: none
                     secondary_info: none
@@ -79,11 +95,11 @@ views:
                             border: 0px;
                             margin-left: -30px;
                             margin-top: -20px;
-
                           }
               # ---- Chips ----
               - type: custom:mushroom-chips-card
                 chips:
+
                   # Switches
                   - type: template
                     entity: switch.livingroom_switches
@@ -105,7 +121,8 @@ views:
                           border: 0 !important;
                           box-shadow: none !important;
                           border-radius: 22px !important;
-                        }                  # Media
+                        }
+                  # Media
                   - type: template
                     entity: media_player.livingroom_mediaplayers
                     tap_action:
@@ -138,7 +155,6 @@ views:
                           border-radius: 22px !important;
                         }
               # ---- End Chips ----
-
             card_mod:
               style: |
                 ha-card {
@@ -186,10 +202,12 @@ views:
                     double_tap_action:
                       action: more-info
                     icon_color: >-
-                      {% if is_state('switch.dining_room_switches', 'on') 
-                                            #2973B2 
+                      {% if is_state('light.dining_room_lights', 'on')
+                        or is_state('switch.dining_room_switches', 'on')
+                        or is_state('media_player.dining_room_mediaplayers', 'on')%}
+                          #2973B2
                       {% else %}
-                        #7A7A7F 
+                          #7A7A7F
                       {% endif %}
                     primary_info: none
                     secondary_info: none
@@ -204,11 +222,11 @@ views:
                             border: 0px;
                             margin-left: -30px;
                             margin-top: -20px;
-
                           }
               # ---- Chips ----
               - type: custom:mushroom-chips-card
                 chips:
+
                   # Switches
                   - type: template
                     entity: switch.dining_room_switches
@@ -231,8 +249,8 @@ views:
                           box-shadow: none !important;
                           border-radius: 22px !important;
                         }
-              # ---- End Chips ----
 
+              # ---- End Chips ----
             card_mod:
               style: |
                 ha-card {
@@ -280,11 +298,12 @@ views:
                     double_tap_action:
                       action: more-info
                     icon_color: >-
-                      {% if is_state('switch.office_switches', 'on') 
-                      }
-                      or is_state('media_player.media_player.office_roku_office','on') %}                      #2973B2 
+                      {% if is_state('light.office_lights', 'on')
+                        or is_state('switch.office_switches', 'on')
+                        or is_state('media_player.office_mediaplayers', 'on')%}
+                          #3D8D7A
                       {% else %}
-                        #7A7A7F 
+                          #7A7A7F
                       {% endif %}
                     primary_info: none
                     secondary_info: none
@@ -299,7 +318,6 @@ views:
                             border: 0px;
                             margin-left: -30px;
                             margin-top: -20px;
-
                           }
               # ---- Chips ----
               - type: custom:mushroom-chips-card
@@ -325,7 +343,8 @@ views:
                           border: 0 !important;
                           box-shadow: none !important;
                           border-radius: 22px !important;
-                        }                  # Switches
+                        }
+                  # Switches
                   - type: template
                     entity: switch.office_switches
                     tap_action:
@@ -346,7 +365,8 @@ views:
                           border: 0 !important;
                           box-shadow: none !important;
                           border-radius: 22px !important;
-                        }                  # Media
+                        }
+                  # Media
                   - type: template
                     entity: media_player.office_mediaplayers
                     tap_action:
@@ -379,7 +399,6 @@ views:
                           border-radius: 22px !important;
                         }
               # ---- End Chips ----
-
             card_mod:
               style: |
                 ha-card {
@@ -427,10 +446,12 @@ views:
                     double_tap_action:
                       action: more-info
                     icon_color: >-
-                      {% if is_state('switch.foyer_switches', 'on') 
-                                            #2973B2 
+                      {% if is_state('light.foyer_lights', 'on')
+                        or is_state('switch.foyer_switches', 'on')
+                        or is_state('media_player.foyer_mediaplayers', 'on')%}
+                          #2973B2
                       {% else %}
-                        #7A7A7F 
+                          #7A7A7F
                       {% endif %}
                     primary_info: none
                     secondary_info: none
@@ -445,7 +466,6 @@ views:
                             border: 0px;
                             margin-left: -30px;
                             margin-top: -20px;
-
                           }
               # ---- Chips ----
               - type: custom:mushroom-chips-card
@@ -472,8 +492,9 @@ views:
                           box-shadow: none !important;
                           border-radius: 22px !important;
                         }
-              # ---- End Chips ----
 
+
+              # ---- End Chips ----
             card_mod:
               style: |
                 ha-card {
@@ -485,6 +506,81 @@ views:
                   border: none;
                 }
           # ---- End Foyer Card ----
+          # ---- Kitchen Card ----
+          - type: custom:stack-in-card
+            mode: horizontal
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Kitchen
+                    secondary: >-
+                      {{ states('sensor.main_floor_temperature')|round(0) }}°F |
+                      {{ states('sensor.main_floor_outdoor_humidity')|round(0) }}%
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            display: none !important;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            padding-left: 10px;
+                            padding-top: 10px;
+                            width: 500px;
+                          }
+                  - type: custom:mushroom-legacy-template-card
+                    entity: switch.bedroom_lights_smart_plug
+                    layout: horizontal
+                    icon: mdi:fridge-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#kitchen"
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon_color: >-
+                      {% if is_state('light.kitchen_lights', 'on')
+                        or is_state('switch.kitchen_switches', 'on')
+                        or is_state('media_player.kitchen_mediaplayers', 'on')%}
+                          #3D8D7A
+                      {% else %}
+                          #7A7A7F
+                      {% endif %}
+                    primary_info: none
+                    secondary_info: none
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --icon-size: 135px;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            margin-left: -30px;
+                            margin-top: -20px;
+                          }
+              # ---- Chips ----
+              - type: custom:mushroom-chips-card
+                chips:
+
+
+
+              # ---- End Chips ----
+            card_mod:
+              style: |
+                ha-card {
+                  max-width: 100%;
+                  min-width: 50%;
+                  height: 185px;
+                  background: none;
+                  box-shadow: 0.5px;
+                  border: none;
+                }
+          # ---- End Kitchen Card ----
 
         # Room Card Popups
       - type: custom:bubble-card
@@ -650,6 +746,17 @@ views:
             show_state: true
             grid_options:
               columns: 6
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+          action: more-info
+      - type: custom:bubble-card
+        card_type: pop-up
+        name: Kitchen
+        icon: mdi:fridge-outline
+        hash: "#kitchen"
+        cards:
         button_type: name
         sub_button:
           main: []

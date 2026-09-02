@@ -1,7 +1,11 @@
+weather:
+  entity: weather.forecast_home
+
 rooms:
   - name: Living Room
     icon: mdi:sofa-outline
     plug: livingroom
+    active_color: "#2973B2"
     switches:
       - entity: switch.plug_6
         name: Christmas Tree Lights
@@ -11,12 +15,14 @@ rooms:
   - name: Dining Room
     icon: mdi:coffee-outline
     plug: dining_room
+    active_color: "#2973B2"
     switches:
       - entity: switch.plug_7
         name: Scentsy
   - name: Office
     icon: mdi:remote-desktop
     plug: office
+    active_color: "#3D8D7A"
     lights:
       - entity: light.office_overhead
         name: Fan Light
@@ -29,6 +35,7 @@ rooms:
   - name: Foyer
     icon: mdi:door
     plug: foyer
+    active_color: "#2973B2"
     lights:
       - entity: light.dining_room_leg_lamp
         name: Leg Lamp
@@ -38,3 +45,7 @@ rooms:
         name: Porch Center
       - entity: light.porch_3
         name: Porch Right
+  - name: Kitchen
+    icon: mdi:fridge-outline
+    plug: kitchen
+    active_color: "#3D8D7A"

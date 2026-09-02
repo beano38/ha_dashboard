@@ -1,0 +1,14 @@
+      - type: weather-forecast
+        show_current: true
+        show_forecast: true
+        entity: {{ weather.entity }}
+        secondary_info_attribute: humidity
+        forecast_type: daily
+        forecast_slots: 5
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              box-shadow: none;
+              border: none;
+            }

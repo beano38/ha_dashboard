@@ -37,15 +37,12 @@
                       action: more-info
                     {% raw -%}
                     icon_color: >-
-                      {% if is_state('switch.{% endraw -%}{{room.plug}}{% raw -%}_switches', 'on') 
-                      {% endraw -%}
-                      {% if room.media is defined %}}
-                      {% raw -%}or is_state('media_player.{% endraw -%}{{ room.media[0].entity }}{% raw -%}','on') %}{% endraw -%}
-                      {% endif %}
-                      {% raw -%} 
-                        #2973B2 
+                      {% if is_state('light.{% endraw -%}{{ room.plug }}{% raw -%}_lights', 'on')
+                        or is_state('switch.{% endraw -%}{{ room.plug }}{% raw -%}_switches', 'on')
+                        or is_state('media_player.{% endraw -%}{{ room.plug }}{% raw -%}_mediaplayers', 'on')%}
+                          {% endraw -%}{{ room.active_color }}{% raw %}
                       {% else %}
-                        #7A7A7F 
+                          #7A7A7F
                       {% endif %}
                     {% endraw -%}
                     primary_info: none
@@ -61,7 +58,6 @@
                             border: 0px;
                             margin-left: -30px;
                             margin-top: -20px;
-
                           }
               # ---- Chips ----
               - type: custom:mushroom-chips-card
@@ -69,15 +65,16 @@
 {% if room.lights is defined %}
 {% include "includes/chip_lights.j2" %}
 {% endif %}
+
 {% if room.switches is defined %}
 {% include "includes/chip_switches.j2" %}
 {% endif %}
+
 {% if room.media is defined %}
 {% include "includes/chip_media.j2" %}
 {% endif %}
 
               # ---- End Chips ----
-
             card_mod:
               style: |
                 ha-card {
