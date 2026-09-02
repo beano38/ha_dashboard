@@ -74,6 +74,18 @@
 {% include "includes/chip_media.j2" %}
 {% endif %}
 
+                card_mod:
+                  style: |
+                    .chip-container {
+                      flex-flow: column wrap-reverse !important;
+                      display: flex !important;
+                      --chip-spacing: 8px;
+                      margin: 12px;
+                    }
+                    .: |
+                    .container {
+                      align: end;
+                    }
               # ---- End Chips ----
             card_mod:
               style: |

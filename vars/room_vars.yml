@@ -12,13 +12,13 @@ rooms:
     media:
       - type: tv
         entity: media_player.living_room_tv_un82ru8000fxza
-  - name: Dining Room
-    icon: mdi:coffee-outline
-    plug: dining_room
-    active_color: "#2973B2"
-    switches:
-      - entity: switch.plug_7
-        name: Scentsy
+  # - name: Dining Room
+  #   icon: mdi:coffee-outline
+  #   plug: dining_room
+  #   active_color: "#2973B2"
+  #   switches:
+  #     - entity: switch.plug_7
+  #       name: Scentsy
   - name: Office
     icon: mdi:remote-desktop
     plug: office
@@ -32,20 +32,20 @@ rooms:
     media:
       - type: roku 
         entity: media_player.office_roku_office
-  - name: Foyer
-    icon: mdi:door
-    plug: foyer
-    active_color: "#2973B2"
-    lights:
-      - entity: light.dining_room_leg_lamp
-        name: Leg Lamp
-      - entity: light.porch_1
-        name: Porch Left
-      - entity: light.porch_2
-        name: Porch Center
-      - entity: light.porch_3
-        name: Porch Right
-  - name: Kitchen
-    icon: mdi:fridge-outline
-    plug: kitchen
-    active_color: "#3D8D7A"
+  # - name: Foyer
+  #   icon: mdi:door
+  #   plug: foyer
+  #   active_color: "#2973B2"
+  #   lights:
+  #     - entity: light.dining_room_leg_lamp
+  #       name: Leg Lamp
+  #     - entity: light.porch_1
+  #       name: Porch Left
+  #     - entity: light.porch_2
+  #       name: Porch Center
+  #     - entity: light.porch_3
+  #       name: Porch Right
+  # - name: Kitchen
+  #   icon: mdi:fridge-outline
+  #   plug: kitchen
+  #   active_color: "#3D8D7A"
