@@ -14,10 +14,13 @@ views:
     cards:
       # weather
 {% include "includes/weather_card.j2" %}  
+
+{% for room in rooms %}
+{% if loop.index0 % 2 == 0 %}
       - type: horizontal-stack
         cards:
         # Room Cards
-{% for room in rooms %}
+{% endif %}
 {% include "includes/room_card.j2" %}
 {% endfor %}
 

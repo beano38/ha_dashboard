@@ -36,6 +36,7 @@ views:
               box-shadow: none;
               border: none;
             }  
+
       - type: horizontal-stack
         cards:
         # Room Cards
@@ -178,6 +179,114 @@ views:
                   border: none;
                 }
           # ---- End Living Room Card ----
+          # ---- Dining Room Card ----
+          - type: custom:stack-in-card
+            mode: horizontal
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Dining Room
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            display: none !important;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            padding-left: 10px;
+                            padding-top: 10px;
+                            width: 500px;
+                          }
+                  - type: custom:mushroom-legacy-template-card
+                    entity: switch.bedroom_lights_smart_plug
+                    layout: horizontal
+                    icon: mdi:coffee-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#dining_room"
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon_color: >-
+                      {% if is_state('light.dining_room_lights', 'on')
+                        or is_state('switch.dining_room_switches', 'on')
+                        or is_state('media_player.dining_room_mediaplayers', 'on')%}
+                          #2973B2
+                      {% else %}
+                          #7A7A7F
+                      {% endif %}
+                    primary_info: none
+                    secondary_info: none
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --icon-size: 135px;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            margin-left: -30px;
+                            margin-top: -20px;
+                          }
+              # ---- Chips ----
+              - type: custom:mushroom-chips-card
+                chips:
+
+                  # Switches
+                  - type: template
+                    entity: switch.dining_room_switches
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon: mdi:light-switch-off
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: {% if is_state('switch.dining_room_switches', 'on') %} #2973B2 {% else %} #353535 {% endif %};
+                          --color: {% if is_state('switch.dining_room_switches', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }
+
+                card_mod:
+                  style: |
+                    .chip-container {
+                      flex-flow: column wrap-reverse !important;
+                      display: flex !important;
+                      --chip-spacing: 8px;
+                      margin: 12px;
+                    }
+                    .: |
+                    .container {
+                      align: end;
+                    }
+              # ---- End Chips ----
+            card_mod:
+              style: |
+                ha-card {
+                  max-width: 100%;
+                  min-width: 50%;
+                  height: 185px;
+                  background: none;
+                  box-shadow: 0.5px;
+                  border: none;
+                }
+          # ---- End Dining Room Card ----
+      - type: horizontal-stack
+        cards:
+        # Room Cards
           # ---- Office Card ----
           - type: custom:stack-in-card
             mode: horizontal
@@ -338,6 +447,198 @@ views:
                   border: none;
                 }
           # ---- End Office Card ----
+          # ---- Foyer Card ----
+          - type: custom:stack-in-card
+            mode: horizontal
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Foyer
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            display: none !important;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            padding-left: 10px;
+                            padding-top: 10px;
+                            width: 500px;
+                          }
+                  - type: custom:mushroom-legacy-template-card
+                    entity: switch.bedroom_lights_smart_plug
+                    layout: horizontal
+                    icon: mdi:door
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#foyer"
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon_color: >-
+                      {% if is_state('light.foyer_lights', 'on')
+                        or is_state('switch.foyer_switches', 'on')
+                        or is_state('media_player.foyer_mediaplayers', 'on')%}
+                          #2973B2
+                      {% else %}
+                          #7A7A7F
+                      {% endif %}
+                    primary_info: none
+                    secondary_info: none
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --icon-size: 135px;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            margin-left: -30px;
+                            margin-top: -20px;
+                          }
+              # ---- Chips ----
+              - type: custom:mushroom-chips-card
+                chips:
+                  # Lights
+                  - type: template
+                    entity: light.foyer_lights
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon: mdi:lightbulb-group
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: {% if is_state('light.foyer_lights', 'on') %} #2973B2 {% else %} #353535 {% endif %};
+                          --color: {% if is_state('light.foyer_lights', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }
+
+
+                card_mod:
+                  style: |
+                    .chip-container {
+                      flex-flow: column wrap-reverse !important;
+                      display: flex !important;
+                      --chip-spacing: 8px;
+                      margin: 12px;
+                    }
+                    .: |
+                    .container {
+                      align: end;
+                    }
+              # ---- End Chips ----
+            card_mod:
+              style: |
+                ha-card {
+                  max-width: 100%;
+                  min-width: 50%;
+                  height: 185px;
+                  background: none;
+                  box-shadow: 0.5px;
+                  border: none;
+                }
+          # ---- End Foyer Card ----
+      - type: horizontal-stack
+        cards:
+        # Room Cards
+          # ---- Kitchen Card ----
+          - type: custom:stack-in-card
+            mode: horizontal
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Kitchen
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            display: none !important;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            padding-left: 10px;
+                            padding-top: 10px;
+                            width: 500px;
+                          }
+                  - type: custom:mushroom-legacy-template-card
+                    entity: switch.bedroom_lights_smart_plug
+                    layout: horizontal
+                    icon: mdi:fridge-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#kitchen"
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon_color: >-
+                      {% if is_state('light.kitchen_lights', 'on')
+                        or is_state('switch.kitchen_switches', 'on')
+                        or is_state('media_player.kitchen_mediaplayers', 'on')%}
+                          #3D8D7A
+                      {% else %}
+                          #7A7A7F
+                      {% endif %}
+                    primary_info: none
+                    secondary_info: none
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --icon-size: 135px;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            margin-left: -30px;
+                            margin-top: -20px;
+                          }
+              # ---- Chips ----
+              - type: custom:mushroom-chips-card
+                chips:
+
+
+
+                card_mod:
+                  style: |
+                    .chip-container {
+                      flex-flow: column wrap-reverse !important;
+                      display: flex !important;
+                      --chip-spacing: 8px;
+                      margin: 12px;
+                    }
+                    .: |
+                    .container {
+                      align: end;
+                    }
+              # ---- End Chips ----
+            card_mod:
+              style: |
+                ha-card {
+                  max-width: 100%;
+                  min-width: 50%;
+                  height: 185px;
+                  background: none;
+                  box-shadow: 0.5px;
+                  border: none;
+                }
+          # ---- End Kitchen Card ----
           # ---- Sunroom Card ----
           - type: custom:stack-in-card
             mode: horizontal
@@ -537,6 +838,37 @@ views:
           action: more-info
       - type: custom:bubble-card
         card_type: pop-up
+        name: Dining Room
+        icon: mdi:coffee-outline
+        hash: "#dining_room"
+        cards:
+          - type: custom:bubble-card
+            card_type: separator
+            name: Switches
+            icon: mdi:switch
+          - type: custom:bubble-card
+            name: All Switches
+            card_type: button
+            button_type: slider
+            entity: switch.dining_room_switches
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:bubble-card
+            name: Scentsy
+            card_type: button
+            button_type: slider
+            entity: switch.plug_7
+            show_state: true
+            grid_options:
+              columns: 6
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+          action: more-info
+      - type: custom:bubble-card
+        card_type: pop-up
         name: Office
         icon: mdi:remote-desktop
         hash: "#office"
@@ -606,6 +938,72 @@ views:
             grid_options:
               columns: 12
               rows: auto
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+          action: more-info
+      - type: custom:bubble-card
+        card_type: pop-up
+        name: Foyer
+        icon: mdi:door
+        hash: "#foyer"
+        cards:
+          - type: custom:bubble-card
+            card_type: separator
+            name: Lights
+            icon: mdi:light
+          - type: custom:bubble-card
+            name: All Lights
+            card_type: button
+            button_type: slider
+            entity: light.foyer_lights
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:bubble-card
+            name: Leg Lamp
+            card_type: button
+            button_type: slider
+            entity: light.dining_room_leg_lamp
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:bubble-card
+            name: Porch Left
+            card_type: button
+            button_type: slider
+            entity: light.porch_1
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:bubble-card
+            name: Porch Center
+            card_type: button
+            button_type: slider
+            entity: light.porch_2
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:bubble-card
+            name: Porch Right
+            card_type: button
+            button_type: slider
+            entity: light.porch_3
+            show_state: true
+            grid_options:
+              columns: 6
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+          action: more-info
+      - type: custom:bubble-card
+        card_type: pop-up
+        name: Kitchen
+        icon: mdi:fridge-outline
+        hash: "#kitchen"
+        cards:
         button_type: name
         sub_button:
           main: []
