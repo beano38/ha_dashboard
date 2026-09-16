@@ -48,8 +48,8 @@ views:
                   - type: custom:mushroom-template-card
                     primary: Living Room
                     secondary: >-
-                      {{ states('sensor.main_floor_temperature')|round(0) }}°F |
-                      {{ states('sensor.main_floor_outdoor_humidity')|round(0) }}%
+                      {{ states('sensor.main_floor_temperature') | round(0) }}°F |
+                      {{ states('sensor.upstairs_outdoor_humidity') | round(0) }}%
                     card_mod:
                       style:
                         mushroom-shape-icon$: |
@@ -187,8 +187,8 @@ views:
                   - type: custom:mushroom-template-card
                     primary: Office
                     secondary: >-
-                      {{ states('sensor.main_floor_temperature')|round(0) }}°F |
-                      {{ states('sensor.main_floor_outdoor_humidity')|round(0) }}%
+                      {{ states('sensor.h5075_f388_temperature') | round(0) }}°F |
+                      {{ states('sensor.h5075_f388_humidity') | round(0) }}%
                     card_mod:
                       style:
                         mushroom-shape-icon$: |
@@ -338,6 +338,145 @@ views:
                   border: none;
                 }
           # ---- End Office Card ----
+          # ---- Sunroom Card ----
+          - type: custom:stack-in-card
+            mode: horizontal
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Sunroom
+                    secondary: >-
+                      {{ states('sensor.h5075_6832_temperature') | round(0) }}°F |
+                      {{ states('sensor.h5075_6832_humidity') | round(0) }}%
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            display: none !important;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            padding-left: 10px;
+                            padding-top: 10px;
+                            width: 500px;
+                          }
+                  - type: custom:mushroom-legacy-template-card
+                    entity: switch.bedroom_lights_smart_plug
+                    layout: horizontal
+                    icon: mdi:weather-sunny
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#sunroom"
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon_color: >-
+                      {% if is_state('light.sunroom_lights', 'on')
+                        or is_state('switch.sunroom_switches', 'on')
+                        or is_state('media_player.sunroom_mediaplayers', 'on')%}
+                          #AA4DC4
+                      {% else %}
+                          #7A7A7F
+                      {% endif %}
+                    primary_info: none
+                    secondary_info: none
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --icon-size: 135px;
+                          }
+                        .: |
+                          ha-card {
+                            border: 0px;
+                            margin-left: -30px;
+                            margin-top: -20px;
+                          }
+              # ---- Chips ----
+              - type: custom:mushroom-chips-card
+                chips:
+
+                  # Switches
+                  - type: template
+                    entity: switch.sunroom_switches
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                    icon: mdi:light-switch-off
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: {% if is_state('switch.sunroom_switches', 'on') %} #2973B2 {% else %} #353535 {% endif %};
+                          --color: {% if is_state('switch.sunroom_switches', 'on') %} #ffffff {% else %} #ebeaea {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }
+                  # Media
+                  - type: template
+                    entity: media_player.sunroom_mediaplayers
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: none
+                    icon: mdi:television
+                    card_mod:
+                      style: |
+                        ha-card {
+                          --chip-background: 
+                          {% if is_state('media_player.sunroom_mediaplayers', 'on') %}
+                          #835a3e 
+                          {% else %}
+                          #353535 
+                          {% endif %};
+                          --color: 
+                          {% if is_state('media_player.sunroom_mediaplayers', 'on') %}
+                          #ffffff
+                          {% else %}
+                          #ebeaea
+                          {% endif %};
+                          justify-content: center;
+                          height: 35px !important;
+                          width: 35px !important;
+                          border: 0 !important;
+                          box-shadow: none !important;
+                          border-radius: 22px !important;
+                        }
+                card_mod:
+                  style: |
+                    .chip-container {
+                      flex-flow: column wrap-reverse !important;
+                      display: flex !important;
+                      --chip-spacing: 8px;
+                      margin: 12px;
+                    }
+                    .: |
+                    .container {
+                      align: end;
+                    }
+              # ---- End Chips ----
+            card_mod:
+              style: |
+                ha-card {
+                  max-width: 100%;
+                  min-width: 50%;
+                  height: 185px;
+                  background: none;
+                  box-shadow: 0.5px;
+                  border: none;
+                }
+          # ---- End Sunroom Card ----
 
         # Room Card Popups
       - type: custom:bubble-card
@@ -366,6 +505,31 @@ views:
             show_state: true
             grid_options:
               columns: 6
+          - type: custom:tv-card
+            entity: media_player.living_room_tv_un82ru8000fxza
+            power_row:
+              - return
+              - power
+              - home
+            apps_row:
+              - spectrum
+              - youtube
+              - emby
+            volume_row: buttons
+            navigation_row: buttons
+            media_control_row:
+              - rewind
+              - fast_forward
+              - play
+              - pause
+            card_mod:
+              style: |
+                ha-card {
+                  padding-top: 16px;
+                }
+            grid_options:
+              columns: 12
+              rows: auto
         button_type: name
         sub_button:
           main: []
@@ -417,6 +581,87 @@ views:
             show_state: true
             grid_options:
               columns: 6
+          - type: custom:tv-card
+            entity: media_player.office_roku_office
+            power_row:
+              - return
+              - power
+              - home
+            apps_row:
+              - spectrum
+              - youtube
+              - emby
+            volume_row: buttons
+            navigation_row: buttons
+            media_control_row:
+              - rewind
+              - fast_forward
+              - play
+              - pause
+            card_mod:
+              style: |
+                ha-card {
+                  padding-top: 16px;
+                }
+            grid_options:
+              columns: 12
+              rows: auto
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+          action: more-info
+      - type: custom:bubble-card
+        card_type: pop-up
+        name: Sunroom
+        icon: mdi:weather-sunny
+        hash: "#sunroom"
+        cards:
+          - type: custom:bubble-card
+            card_type: separator
+            name: Switches
+            icon: mdi:switch
+          - type: custom:bubble-card
+            name: All Switches
+            card_type: button
+            button_type: slider
+            entity: switch.sunroom_switches
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:bubble-card
+            name: Xmas Tree
+            card_type: button
+            button_type: slider
+            entity: switch.plug_5
+            show_state: true
+            grid_options:
+              columns: 6
+          - type: custom:tv-card
+            entity: media_player.lg_webos_tv_uq8000aub
+            power_row:
+              - return
+              - power
+              - home
+            apps_row:
+              - spectrum
+              - youtube
+              - emby
+            volume_row: buttons
+            navigation_row: buttons
+            media_control_row:
+              - rewind
+              - fast_forward
+              - play
+              - pause
+            card_mod:
+              style: |
+                ha-card {
+                  padding-top: 16px;
+                }
+            grid_options:
+              columns: 12
+              rows: auto
         button_type: name
         sub_button:
           main: []

@@ -6,11 +6,13 @@
                 cards:
                   - type: custom:mushroom-template-card
                     primary: {{ room.name }}
+{% if room.environment is defined %}
                     {% raw -%}
                     secondary: >-
-                      {{ states('sensor.main_floor_temperature')|round(0) }}°F |
-                      {{ states('sensor.main_floor_outdoor_humidity')|round(0) }}%
-                    {% endraw -%}
+                      {{ states('{% endraw -%}{{ room.environment.temp_entity }}{% raw -%}') | round(0) }}°F |
+                      {{ states('{% endraw -%}{{ room.environment.humidity_entity }}{% raw -%}') | round(0) }}%
+{% endraw -%}
+{% endif %}
                     card_mod:
                       style:
                         mushroom-shape-icon$: |

@@ -52,6 +52,9 @@
               columns: 6
 {% endfor %}
 {% endif %}
+{% if room.media is defined %}
+{% include "includes/popup_tv_remote.j2" %}
+{% endif %}
         button_type: name
         sub_button:
           main: []

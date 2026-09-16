@@ -1,0 +1,27 @@
+{% for media_unit in room.media %}
+          - type: custom:tv-card
+            entity: {{ media_unit.entity }}
+            power_row:
+              - return
+              - power
+              - home
+            apps_row:
+              - spectrum
+              - youtube
+              - emby
+            volume_row: buttons
+            navigation_row: buttons
+            media_control_row:
+              - rewind
+              - fast_forward
+              - play
+              - pause
+            card_mod:
+              style: |
+                ha-card {
+                  padding-top: 16px;
+                }
+            grid_options:
+              columns: 12
+              rows: auto
+{% endfor %}

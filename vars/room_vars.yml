@@ -6,6 +6,9 @@ rooms:
     icon: mdi:sofa-outline
     plug: livingroom
     active_color: "#2973B2"
+    environment:
+      temp_entity: sensor.main_floor_temperature
+      humidity_entity: sensor.upstairs_outdoor_humidity
     switches:
       - entity: switch.plug_6
         name: Christmas Tree Lights
@@ -23,6 +26,9 @@ rooms:
     icon: mdi:remote-desktop
     plug: office
     active_color: "#3D8D7A"
+    environment:
+      temp_entity: sensor.h5075_f388_temperature
+      humidity_entity: sensor.h5075_f388_humidity
     lights:
       - entity: light.office_overhead
         name: Fan Light
@@ -49,3 +55,16 @@ rooms:
   #   icon: mdi:fridge-outline
   #   plug: kitchen
   #   active_color: "#3D8D7A"
+  - name: Sunroom
+    icon: mdi:weather-sunny
+    plug: sunroom
+    active_color: "#AA4DC4"
+    environment:
+      temp_entity: sensor.h5075_6832_temperature
+      humidity_entity: sensor.h5075_6832_humidity
+    switches:
+      - entity: switch.plug_5
+        name: Xmas Tree
+    media:
+      - type: roku 
+        entity: media_player.lg_webos_tv_uq8000aub
