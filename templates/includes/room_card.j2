@@ -24,7 +24,8 @@
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -92,8 +93,9 @@
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;

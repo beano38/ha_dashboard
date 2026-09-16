@@ -5,30 +5,33 @@ views:
     card_mod: null
     style: |
       ha-card {
-      bottom: 0;
-      right: 0;
-      left: 0;
-      z-index: 5;
-      position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 5;
+        position: fixed;
       }
+
     cards:
       # weather
-{% include "includes/weather_card.j2" %}  
+{% include "includes/weather_card.j2" %}
 
-{% for room in rooms %}
-{% if loop.index0 % 2 == 0 %}
-      - type: horizontal-stack
+      # Room Cards
+      - type: custom:layout-card
+        layout_type: grid
+        layout:
+          grid-template-columns: repeat(auto-fit, minmax(185px, 1fr))
+          grid-gap: 8px
+          margin: 0
         cards:
-        # Room Cards
-{% endif %}
+{% for room in rooms %}
 {% include "includes/room_card.j2" %}
 {% endfor %}
 
-        # Room Card Popups
+      # Room Card Popups
 {% for room in rooms %}
 {% include "includes/room_card_popup.j2" %}
 {% endfor %}
-
 
     badges: []
     icon: mdi:home

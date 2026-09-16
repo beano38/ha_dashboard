@@ -14,12 +14,13 @@ views:
     card_mod: null
     style: |
       ha-card {
-      bottom: 0;
-      right: 0;
-      left: 0;
-      z-index: 5;
-      position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 5;
+        position: fixed;
       }
+
     cards:
       # weather
       - type: weather-forecast
@@ -35,11 +36,15 @@ views:
               background: none;
               box-shadow: none;
               border: none;
-            }  
-
-      - type: horizontal-stack
+            }
+      # Room Cards
+      - type: custom:layout-card
+        layout_type: grid
+        layout:
+          grid-template-columns: repeat(auto-fit, minmax(185px, 1fr))
+          grid-gap: 8px
+          margin: 0
         cards:
-        # Room Cards
           # ---- Living Room Card ----
           - type: custom:stack-in-card
             mode: horizontal
@@ -62,7 +67,8 @@ views:
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -171,8 +177,9 @@ views:
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;
@@ -198,7 +205,8 @@ views:
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -276,17 +284,15 @@ views:
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;
                   border: none;
                 }
           # ---- End Dining Room Card ----
-      - type: horizontal-stack
-        cards:
-        # Room Cards
           # ---- Office Card ----
           - type: custom:stack-in-card
             mode: horizontal
@@ -309,7 +315,8 @@ views:
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -439,8 +446,9 @@ views:
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;
@@ -466,7 +474,8 @@ views:
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -544,17 +553,15 @@ views:
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;
                   border: none;
                 }
           # ---- End Foyer Card ----
-      - type: horizontal-stack
-        cards:
-        # Room Cards
           # ---- Kitchen Card ----
           - type: custom:stack-in-card
             mode: horizontal
@@ -574,7 +581,8 @@ views:
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -631,8 +639,9 @@ views:
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;
@@ -661,7 +670,8 @@ views:
                             border: 0px;
                             padding-left: 10px;
                             padding-top: 10px;
-                            width: 500px;
+                            width: 100%;
+                            min_width: 0;
                           }
                   - type: custom:mushroom-legacy-template-card
                     entity: switch.bedroom_lights_smart_plug
@@ -770,8 +780,9 @@ views:
             card_mod:
               style: |
                 ha-card {
+                  width: 100%;
                   max-width: 100%;
-                  min-width: 50%;
+                  min-width: 0;
                   height: 185px;
                   background: none;
                   box-shadow: 0.5px;
@@ -779,7 +790,7 @@ views:
                 }
           # ---- End Sunroom Card ----
 
-        # Room Card Popups
+      # Room Card Popups
       - type: custom:bubble-card
         card_type: pop-up
         name: Living Room
@@ -1065,7 +1076,6 @@ views:
           main: []
           bottom: []
           action: more-info
-
 
     badges: []
     icon: mdi:home
