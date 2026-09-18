@@ -17,9 +17,14 @@ views:
       - type: horizontal-stack
         cards:
           - type: custom:mushroom-chips-card
+            alignment: center
             chips:
 {% if todo is defined %}
 {% include "includes/top_row_todo.j2" %}
+{% endif %}
+
+{% if cameras is defined %}
+{% include "includes/top_row_cameras.j2" %}
 {% endif %}
       # END button stack at top row
       # weather
@@ -40,6 +45,9 @@ views:
       # Top Row Popups
 {% if todo is defined %}
 {% include "includes/chip_todo.j2" %}
+{% endif %}
+{% if cameras is defined %}
+{% include "includes/chip_cameras.j2" %}
 {% endif %}
       # Room Card Popups
 {% for room in rooms %}

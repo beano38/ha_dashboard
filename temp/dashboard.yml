@@ -26,6 +26,7 @@ views:
       - type: horizontal-stack
         cards:
           - type: custom:mushroom-chips-card
+            alignment: center
             chips:
             - type: template
               tap_action:
@@ -44,6 +45,12 @@ views:
                 action: none
               double_tap_action:
                 action: none
+
+            - type: action
+              tap_action:
+                action: navigate
+                navigation_path: "#cameras"
+              icon: mdi:cctv
       # END button stack at top row
       # weather
       - type: weather-forecast
@@ -837,7 +844,56 @@ views:
             hide_create: false
             grid_options:
               columns: 12
-              rows: auto      # Room Card Popups
+              rows: auto
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#cameras"
+        button_type: name
+        icon: mdi:cctv
+        name: Security
+        card_layout: normal
+        auto_close: "598000"
+        sub_button:
+          main: []
+          bottom: []
+        cards:
+          - show_state: false
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.garage_interior
+            theme: Mushroom Rounded Edge - RB
+            grid_options:
+              columns: 12
+              rows: auto
+          - show_state: false
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.bar
+            theme: Mushroom Rounded Edge - RB
+            grid_options:
+              columns: 12
+              rows: auto
+          - show_state: false
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.back_yard
+            theme: Mushroom Rounded Edge - RB
+            grid_options:
+              columns: 12
+              rows: auto
+          - show_state: false
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.front_door_snapshot
+            theme: Mushroom Rounded Edge - RB
+            grid_options:
+              columns: 12
+              rows: auto
+      # Room Card Popups
       - type: custom:bubble-card
         card_type: pop-up
         name: Living Room

@@ -4,6 +4,15 @@ weather:
 # Top Row Chips
 todo:
   entity: todo.mealie_weekly_meals
+cameras:
+  - name: Garage
+    entity: camera.garage_interior
+  - name: Mancave
+    entity: camera.bar
+  - name: Pool
+    entity: camera.back_yard
+  - name: Ring Front Door
+    entity: camera.front_door_snapshot
 
 rooms:
   - name: Living Room

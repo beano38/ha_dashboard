@@ -1,0 +1,24 @@
+
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#cameras"
+        button_type: name
+        icon: mdi:cctv
+        name: Security
+        card_layout: normal
+        auto_close: "598000"
+        sub_button:
+          main: []
+          bottom: []
+        cards:
+{% for camera in cameras %}
+          - show_state: false
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: {{ camera.entity }}
+            theme: Mushroom Rounded Edge - RB
+            grid_options:
+              columns: 12
+              rows: auto
+{% endfor %}
