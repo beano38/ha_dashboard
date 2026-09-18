@@ -1,6 +1,9 @@
 weather:
   entity: weather.forecast_home
 
+top_row:
+  - name: todo
+
 rooms:
   - name: Living Room
     icon: mdi:sofa-outline

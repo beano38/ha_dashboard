@@ -13,6 +13,13 @@ views:
       }
 
     cards:
+      # Button Stack at Top Row
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-chips-card
+            chips:
+{% include "includes/top_row_todo.j2" %}
+      # END button stack at top row
       # weather
 {% include "includes/weather_card.j2" %}
 
@@ -20,7 +27,7 @@ views:
       - type: custom:layout-card
         layout_type: grid
         layout:
-          grid-template-columns: repeat(auto-fit, minmax(185px, 1fr))
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))
           grid-gap: 8px
           margin: 0
         cards:
@@ -28,6 +35,10 @@ views:
 {% include "includes/room_card.j2" %}
 {% endfor %}
 
+      # Top Row Popups
+{% for chip in top_row %}
+{% include "includes/chip_todo.j2" %}
+{% endfor %}
       # Room Card Popups
 {% for room in rooms %}
 {% include "includes/room_card_popup.j2" %}

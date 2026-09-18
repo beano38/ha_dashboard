@@ -22,6 +22,29 @@ views:
       }
 
     cards:
+      # Button Stack at Top Row
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-chips-card
+            chips:
+            - type: template
+              tap_action:
+                action: navigate
+                navigation_path: "#shopping"
+              entity: todo.mealie_weekly_meals
+              icon: mdi:cart-variant
+              icon_color: |2-
+                  {% if states('todo.mealie_weekly_meals') | int > 0 %}
+                    #FFB200
+                  {% else %}
+                    dark
+                  {% endif %}
+              content: "{{states('todo.mealie_weekly_meals')}}"
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+      # END button stack at top row
       # weather
       - type: weather-forecast
         show_current: true
@@ -41,7 +64,7 @@ views:
       - type: custom:layout-card
         layout_type: grid
         layout:
-          grid-template-columns: repeat(auto-fit, minmax(185px, 1fr))
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))
           grid-gap: 8px
           margin: 0
         cards:
@@ -790,7 +813,31 @@ views:
                 }
           # ---- End Sunroom Card ----
 
-      # Room Card Popups
+      # Top Row Popups
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#shopping"
+        button_type: name
+        name: Shopping Cart
+        icon: mdi:cart-heart
+        sub_button:
+          main: []
+          bottom: []
+        show_header: true
+        auto_close: "0"
+        margin: 7px
+        close_on_click: false
+        card_layout: normal
+        cards:
+          - display_order: none
+            type: todo-list
+            entity: todo.mealie_weekly_meals
+            theme: Tablet
+            hide_completed: true
+            hide_create: false
+            grid_options:
+              columns: 12
+              rows: auto      # Room Card Popups
       - type: custom:bubble-card
         card_type: pop-up
         name: Living Room

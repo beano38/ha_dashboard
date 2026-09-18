@@ -1,0 +1,24 @@
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#shopping"
+        button_type: name
+        name: Shopping Cart
+        icon: mdi:cart-heart
+        sub_button:
+          main: []
+          bottom: []
+        show_header: true
+        auto_close: "0"
+        margin: 7px
+        close_on_click: false
+        card_layout: normal
+        cards:
+          - display_order: none
+            type: todo-list
+            entity: todo.mealie_weekly_meals
+            theme: Tablet
+            hide_completed: true
+            hide_create: false
+            grid_options:
+              columns: 12
+              rows: auto
