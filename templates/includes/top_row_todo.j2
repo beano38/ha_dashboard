@@ -2,16 +2,16 @@
               tap_action:
                 action: navigate
                 navigation_path: "#shopping"
-              entity: todo.mealie_weekly_meals
+              entity: {{ todo.entity }}
               icon: mdi:cart-variant
               {% raw -%}
               icon_color: |2-
-                  {% if states('todo.mealie_weekly_meals') | int > 0 %}
+                  {% if states('{% endraw -%}{{ todo.entity }}{% raw -%}') | int > 0 %}
                     #FFB200
                   {% else %}
                     dark
                   {% endif %}
-              content: "{{states('todo.mealie_weekly_meals')}}"
+              content: "{{states('{% endraw -%}{{ todo.entity }}{% raw -%}')}}"
               {% endraw -%}
               hold_action:
                 action: none
