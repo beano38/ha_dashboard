@@ -1,8 +1,9 @@
 weather:
   entity: weather.forecast_home
 
-top_row:
-  - name: todo
+# Top Row Chips
+todo:
+  entity: todo.mealie_weekly_meals
 
 rooms:
   - name: Living Room

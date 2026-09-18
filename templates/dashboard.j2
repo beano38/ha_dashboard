@@ -18,7 +18,9 @@ views:
         cards:
           - type: custom:mushroom-chips-card
             chips:
+{% if todo is defined %}
 {% include "includes/top_row_todo.j2" %}
+{% endif %}
       # END button stack at top row
       # weather
 {% include "includes/weather_card.j2" %}
@@ -36,9 +38,9 @@ views:
 {% endfor %}
 
       # Top Row Popups
-{% for chip in top_row %}
+{% if todo is defined %}
 {% include "includes/chip_todo.j2" %}
-{% endfor %}
+{% endif %}
       # Room Card Popups
 {% for room in rooms %}
 {% include "includes/room_card_popup.j2" %}
