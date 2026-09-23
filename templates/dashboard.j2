@@ -1,4 +1,6 @@
+{% if kiosk_mode is defined %}
 {% include "includes/kiosk_mode.j2" %}
+{% endif %}
 
 views:
   - type: masonry
@@ -26,6 +28,14 @@ views:
 {% if cameras is defined %}
 {% include "includes/top_row_cameras.j2" %}
 {% endif %}
+
+{% if pool is defined %}
+{% include "includes/top_row_pool.j2" %}
+{% endif %}
+
+{% if kiosk_mode is defined %}
+{% include "includes/top_row_kiosk.j2" %}
+{% endif %}
       # END button stack at top row
       # weather
 {% include "includes/weather_card.j2" %}
@@ -49,6 +59,10 @@ views:
 {% if cameras is defined %}
 {% include "includes/chip_cameras.j2" %}
 {% endif %}
+{% if pool is defined %}
+{% include "includes/chip_pool.j2" %}
+{% endif %}
+
       # Room Card Popups
 {% for room in rooms %}
 {% include "includes/room_card_popup.j2" %}

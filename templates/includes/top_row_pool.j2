@@ -1,0 +1,19 @@
+            - type: template
+              tap_action:
+                action: navigate
+                navigation_path: "#pool"
+              entity: {{ pool.water_temp.entity }}
+              icon: mdi:pool
+              {% raw -%}
+              icon_color: |2-
+                  {% if states('{% endraw -%}{{ pool.water_temp.entity }}{% raw -%}') %}
+                    #5e50d7
+                  {% else %}
+                    dark
+                  {% endif %}
+              content: "{{states('{% endraw -%}{{ pool.water_temp.entity }}{% raw -%}')}}°F"
+              {% endraw -%}
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none

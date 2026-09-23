@@ -51,6 +51,33 @@ views:
                 action: navigate
                 navigation_path: "#cameras"
               icon: mdi:cctv
+
+            - type: template
+              tap_action:
+                action: navigate
+                navigation_path: "#pool"
+              entity: sensor.backyard_pool_pool_water_temperature
+              icon: mdi:pool
+              icon_color: |2-
+                  {% if states('sensor.backyard_pool_pool_water_temperature') %}
+                    #5e50d7
+                  {% else %}
+                    dark
+                  {% endif %}
+              content: "{{states('sensor.backyard_pool_pool_water_temperature')}}°F"
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+
+            - type: action
+              tap_action:
+                action: perform-action
+                perform_action: input_boolean.toggle
+                target:
+                  entity_id: input_boolean.kiosk_mode
+                data: {}
+              icon: mdi:fit-to-screen-outline
       # END button stack at top row
       # weather
       - type: weather-forecast
@@ -893,6 +920,61 @@ views:
             grid_options:
               columns: 12
               rows: auto
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pool"
+        button_type: name
+        icon: mdi:pool
+        name: Pool
+        card_layout: normal
+        auto_close: "598000"
+        sub_button:
+          main: []
+          bottom: []
+        cards:
+          - type: tile
+            entity: sensor.backyard_pool_pool_water_temperature
+            name: Water Temperature
+            vertical: false
+            features:
+              - type: trend-graph
+            features_position: bottom
+          - type: tile
+            entity: sensor.backyard_pool_air_temperature
+            name: Air Temperature
+            vertical: false
+            features:
+              - type: trend-graph
+            features_position: bottom
+          - type: tile
+            entity: switch.backyard_pool_pool_filter_pump
+            name: Filter Pump
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: sensor.backyard_pool_pool_filter_pump_speed
+            name: Filter Pump Speed
+            vertical: false
+            features:
+              - type: bar-gauge
+            features_position: bottom
+          - type: tile
+            entity: switch.backyard_pool_pool_waterfall
+            name: Waterfall
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: sensor.backyard_pool_pool_chlorinator_salt_level
+            name: Salt Level
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: sensor.backyard_pool_pool_chlorinator_setting
+            name: Chlorinator Salt Setting
+            vertical: false
+            features:
+              - type: bar-gauge
+            features_position: bottom
       # Room Card Popups
       - type: custom:bubble-card
         card_type: pop-up

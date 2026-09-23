@@ -1,7 +1,7 @@
 weather:
   entity: weather.forecast_home
 
-# Top Row Chips
+# Top Row Important Chips
 todo:
   entity: todo.mealie_weekly_meals
 cameras:
@@ -13,6 +13,14 @@ cameras:
     entity: camera.back_yard
   - name: Ring Front Door
     entity: camera.front_door_snapshot
+pool:
+  water_temp:
+    entity: sensor.backyard_pool_pool_water_temperature
+  air_temp:
+    entity: sensor.backyard_pool_air_temperature
+
+
+kiosk_mode: true
 
 rooms:
   - name: Living Room
