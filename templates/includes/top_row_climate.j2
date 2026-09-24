@@ -6,13 +6,13 @@
               icon: mdi:home-thermometer-outline
               {% raw -%}
               icon_color: |2-
-                  {% if states('climate.main_floor') in ['cool'] %}
-                    #6f62ec
-                  {% elif states('climate.main_floor') in ['heat'] %}
-                    #d35252
-                  {% else %}
-                    dark
-                  {% endif %}
+                {% if state_attr('climate.main_floor', 'hvac_action') == 'cooling' %}
+                  #6f62ec
+                {% elif state_attr('climate.main_floor', 'hvac_action') == 'heating' %}
+                  #d35252
+                {% else %}
+                  dark
+                {% endif %}
               content: |
                 {{ states('{% endraw -%}{{ climate[0].sensor_temp }}{% raw -%}')}}°F
               {% endraw -%}

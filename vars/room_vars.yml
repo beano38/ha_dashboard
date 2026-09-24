@@ -15,7 +15,6 @@ climate:
     sensor_outdoor_temp: sensor.upstairs_outdoor_temperature
     sensor_humidity: sensor.upstairs_humidity
     sensor_outdoor_humidity: sensor.upstairs_outdoor_humidity
-
 todo:
   entity: todo.mealie_weekly_meals
 cameras:
@@ -34,7 +33,6 @@ pool:
     entity: sensor.backyard_pool_air_temperature
   filter_pump:
     entity: switch.backyard_pool_pool_filter_pump
-
 kiosk_mode: false
 
 rooms:

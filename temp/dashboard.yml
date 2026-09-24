@@ -25,13 +25,13 @@ views:
               entity: climate.main_floor
               icon: mdi:home-thermometer-outline
               icon_color: |2-
-                  {% if states('climate.main_floor') in ['cool'] %}
-                    #6f62ec
-                  {% elif states('climate.main_floor') in ['heat'] %}
-                    #d35252
-                  {% else %}
-                    dark
-                  {% endif %}
+                {% if state_attr('climate.main_floor', 'hvac_action') == 'cooling' %}
+                  #6f62ec
+                {% elif state_attr('climate.main_floor', 'hvac_action') == 'heating' %}
+                  #d35252
+                {% else %}
+                  dark
+                {% endif %}
               content: |
                 {{ states('sensor.main_floor_temperature')}}°F
               hold_action:
@@ -905,7 +905,7 @@ views:
             features:
               - type: trend-graph
           - type: tile
-            entity: sensor.upstairs_humidity
+            entity: sensor.main_floor_humidity
             features:
               - type: trend-graph
           - type: tile
