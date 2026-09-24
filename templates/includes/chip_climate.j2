@@ -1,0 +1,33 @@
+
+      - type: custom:bubble-card
+        name: Household Climate
+        card_type: pop-up
+        hash: "#climate"
+        button_type: name
+        icon: mdi:home-thermometer-outline
+        card_layout: normal
+        auto_close: "598000"
+        sub_button:
+          main: []
+          bottom: []
+        cards:
+{% for thermostat in climate %}
+          - type: thermostat
+            entity: {{ thermostat.climate }}
+          - type: tile
+            entity: {{ thermostat.sensor_temp }}
+            features:
+              - type: trend-graph
+          - type: tile
+            entity: {{ thermostat.sensor_humidity }}
+            features:
+              - type: trend-graph
+          - type: tile
+            entity: {{ thermostat.sensor_outdoor_temp }}
+            features:
+              - type: trend-graph
+          - type: tile
+            entity: {{ thermostat.sensor_outdoor_humidity }}
+            features:
+              - type: trend-graph
+{% endfor %}

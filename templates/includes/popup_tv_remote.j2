@@ -1,4 +1,42 @@
 {% for media_unit in room.media %}
+{% if media_unit.type == "roku"  %}
+          - type: custom:bubble-card
+            card_type: media-player
+            entity: {{ media_unit.entity }}
+            cover_background: true
+            hide:
+              next_button: true
+              play_pause_button: true
+              power_button: true
+              previous_button: true
+              volume_button: false
+            sub_button:
+              bottom:
+                - name: Controls
+                  group:
+                    - sub_button_type: select
+                      name: Source
+                      show_icon: false
+                      show_arrow: false
+                      select_attribute: source_list
+                      hide_when_parent_unavailable: true
+                      state_content: source
+                    - name: More info
+                      icon: mdi:chevron-right
+                      show_background: false
+                      state_background: false
+                      fill_width: false
+            grid_options:
+              rows: "1.656"
+              columns: 12
+            force_icon: false
+            name: {{ media_unit.name }}
+            max_volume: 50
+            min_volume: 0
+            show_icon: true
+            scrolling_effect: true
+            state_content: state
+{% else %}
           - type: custom:tv-card
             entity: {{ media_unit.entity }}
             power_row:
@@ -24,4 +62,5 @@
             grid_options:
               columns: 12
               rows: auto
+{% endif %}
 {% endfor %}

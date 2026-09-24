@@ -1,4 +1,4 @@
-{% if kiosk_mode is defined %}
+{% if kiosk_mode is defined and kiosk_mode is true %}
 {% include "includes/kiosk_mode.j2" %}
 {% endif %}
 
@@ -21,6 +21,10 @@ views:
           - type: custom:mushroom-chips-card
             alignment: center
             chips:
+{% if climate is defined %}
+{% include "includes/top_row_climate.j2" %}
+{% endif %}
+
 {% if todo is defined %}
 {% include "includes/top_row_todo.j2" %}
 {% endif %}
@@ -33,7 +37,7 @@ views:
 {% include "includes/top_row_pool.j2" %}
 {% endif %}
 
-{% if kiosk_mode is defined %}
+{% if kiosk_mode is defined and kiosk_mode is true %}
 {% include "includes/top_row_kiosk.j2" %}
 {% endif %}
       # END button stack at top row
@@ -53,6 +57,9 @@ views:
 {% endfor %}
 
       # Top Row Popups
+{% if climate is defined %}
+{% include "includes/chip_climate.j2" %}
+{% endif %}
 {% if todo is defined %}
 {% include "includes/chip_todo.j2" %}
 {% endif %}

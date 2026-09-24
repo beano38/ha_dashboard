@@ -1,0 +1,22 @@
+            - type: template
+              tap_action:
+                action: navigate
+                navigation_path: "#climate"
+              entity: climate.main_floor
+              icon: mdi:home-thermometer-outline
+              {% raw -%}
+              icon_color: |2-
+                  {% if states('climate.main_floor') in ['cool'] %}
+                    #6f62ec
+                  {% elif states('climate.main_floor') in ['heat'] %}
+                    #d35252
+                  {% else %}
+                    dark
+                  {% endif %}
+              content: |
+                {{ states('{% endraw -%}{{ climate[0].sensor_temp }}{% raw -%}')}}°F
+              {% endraw -%}
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none

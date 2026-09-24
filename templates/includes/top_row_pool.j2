@@ -6,12 +6,17 @@
               icon: mdi:pool
               {% raw -%}
               icon_color: |2-
-                  {% if states('{% endraw -%}{{ pool.water_temp.entity }}{% raw -%}') %}
+                  {% if is_state('{% endraw -%}{{ pool.filter_pump.entity }}{% raw -%}', 'on') %}
                     #5e50d7
                   {% else %}
                     dark
                   {% endif %}
-              content: "{{states('{% endraw -%}{{ pool.water_temp.entity }}{% raw -%}')}}°F"
+              content: |
+                {% if states('{% endraw -%}{{ pool.water_temp.entity }}{% raw -%}') not in ['unavailable'] %}
+                  {{ states('{% endraw -%}{{ pool.water_temp.entity }}{% raw -%}')}}°F
+                {% else %}
+                
+                {% endif %}
               {% endraw -%}
               hold_action:
                 action: none

@@ -2,6 +2,20 @@ weather:
   entity: weather.forecast_home
 
 # Top Row Important Chips
+climate:
+  - name: Living Room Thermostat
+    climate: climate.main_floor
+    sensor_temp: sensor.main_floor_temperature
+    sensor_outdoor_temp: sensor.main_floor_outdoor_temperature
+    sensor_humidity: sensor.main_floor_humidity
+    sensor_outdoor_humidity: sensor.main_floor_outdoor_humidity
+  - name: Upstairs Thermostat
+    climate: climate.upstairs
+    sensor_temp: sensor.upstairs_temperature
+    sensor_outdoor_temp: sensor.upstairs_outdoor_temperature
+    sensor_humidity: sensor.upstairs_humidity
+    sensor_outdoor_humidity: sensor.upstairs_outdoor_humidity
+
 todo:
   entity: todo.mealie_weekly_meals
 cameras:
@@ -18,9 +32,10 @@ pool:
     entity: sensor.backyard_pool_pool_water_temperature
   air_temp:
     entity: sensor.backyard_pool_air_temperature
+  filter_pump:
+    entity: switch.backyard_pool_pool_filter_pump
 
-
-kiosk_mode: true
+kiosk_mode: false
 
 rooms:
   - name: Living Room
@@ -36,13 +51,7 @@ rooms:
     media:
       - type: tv
         entity: media_player.living_room_tv_un82ru8000fxza
-  - name: Dining Room
-    icon: mdi:coffee-outline
-    plug: dining_room
-    active_color: "#2973B2"
-    switches:
-      - entity: switch.plug_7
-        name: Scentsy
+
   - name: Office
     icon: mdi:remote-desktop
     plug: office
@@ -58,7 +67,32 @@ rooms:
         name: Darth Vader
     media:
       - type: roku 
+        name: Office Roku
         entity: media_player.office_roku_office
+  - name: Master Bedroom
+    icon: mdi:bed-king-outline
+    plug: master_bedroom
+    active_color: "#c8ab60"
+    switches:
+      - entity: switch_plug_8
+        name: Sexy Time
+    media:
+      - type: roku
+        name: Roku Bedroom
+        entity: media_player.master_bedroom_master_bedroom
+  - name: Sunroom
+    icon: mdi:weather-sunny
+    plug: sunroom
+    active_color: "#AA4DC4"
+    environment:
+      temp_entity: sensor.h5075_6832_temperature
+      humidity_entity: sensor.h5075_6832_humidity
+    switches:
+      - entity: switch.plug_5
+        name: Xmas Tree
+    media:
+      - type: tv
+        entity: media_player.lg_webos_tv_uq8000aub
   - name: Foyer
     icon: mdi:door
     plug: foyer
@@ -76,16 +110,3 @@ rooms:
     icon: mdi:fridge-outline
     plug: kitchen
     active_color: "#3D8D7A"
-  - name: Sunroom
-    icon: mdi:weather-sunny
-    plug: sunroom
-    active_color: "#AA4DC4"
-    environment:
-      temp_entity: sensor.h5075_6832_temperature
-      humidity_entity: sensor.h5075_6832_humidity
-    switches:
-      - entity: switch.plug_5
-        name: Xmas Tree
-    media:
-      - type: roku 
-        entity: media_player.lg_webos_tv_uq8000aub
